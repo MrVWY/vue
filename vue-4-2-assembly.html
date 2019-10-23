@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./VUE/vue.min (1).js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用组件-->
+        <mycom1></mycom1>
+    </div>
+    <script>
+        //1.2使用vue.component('组件名称'，创建出来的组件模板) 组件中的template里的内容必须且只有唯一一个根元素
+        Vue.component('mycom1', {
+            template : '<div><h3>这是使用vue extend 创建的</h3><span>123</span></div>'
+        })
+        var vm = new Vue({
+            el:'#app',
+            data:{},
+            methods:{}
+        });
+    </script>
+</body>
+</html>

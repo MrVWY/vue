@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./VUE/vue.min (1).js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用组件-->
+        <mycom1></mycom1>
+    </div>
+    <script>
+        //1.1使用Vue.extend创建全局vue组件
+        var com1 = Vue.extend({
+            template : '<h3>这是使用vue extend 创建的</h3>'
+        })
+        // Vue.component('mycom1', Vue.extend({
+        //     template : '<h3>这是使用vue extend 创建的</h3>'
+        // }))
+        //1.2使用vue.component('组件名称'，创建出来的组件模板)
+        Vue.component('mycom1',com1)
+        var vm = new Vue({
+            el:'#app',
+            data:{},
+            methods:{}
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./VUE/vue.min (1).js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用组件-->
+        <mycom1></mycom1>
+        <login></login>
+    </div>
+
+    <div id="app2">
+        <!-- 使用组件-->
+        <mycom1></mycom1>
+    </div>
+
+    <template id="tmp1">
+        <div>
+            <h1>这是使用vue extend 创建的 有提示</h1>
+        </div>
+    </template>
+
+    <script>
+        //1.2使用vue.component('组件名称'，创建出来的组件模板)
+        Vue.component('mycom1', {
+            template: '#tmp1'
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            components:{
+                login:{
+                    template:'<h1>私有组件</h1>'
+                }
+            }
+        });
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {},
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

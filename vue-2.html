@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./VUE/vue.min (1).js"></script>
+</head>
+<body>
+    <div id = "emple">
+        a = {{a}}
+        b = {{b}}
+    </div>
+    <div id = "demo">
+        {{fullName}}
+    </div>
+    <script>
+        var vm = new Vue({
+             el : '#emple',
+             data:{
+                 a : 1
+             },
+             computed : {
+                 b : function () {
+                     return this.a + 1
+                 }
+             }
+        })
+
+        var vn = new Vue({
+            el : '#demo',
+            data: {
+                firstName: 'Foo',
+                lastName: 'Bar',
+                fullName: 'Foo Bar'
+            }
+            })
+
+            vm.$watch('firstName', function (val) {
+                this.fullName = val + ' ' + this.lastName
+            })
+
+            vm.$watch('lastName', function (val) {
+                this.fullName = this.firstName + ' ' + val
+            })
+     </script>
+</body>
+</html>

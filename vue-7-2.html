@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./VUE/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <com2 v-on:func="show"></com2>
+    </div>
+    <template id="tmp1">
+        <div>
+            <h3>子组件</h3>
+            <input type="button" @click="myclick" value="1">
+        </div>
+    </template>
+    <script>
+        var com2 ={
+            template:'#tmp1',
+            data:function(){
+                return{
+                    sonmsg:{name:'S',age:5}
+                }
+            },
+            methods:{
+                myclick(){
+                    this.$emit('func',123,this.sonmsg)
+                }
+            }
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '父组件'
+            },
+            methods: {
+                show(data,data1){
+                    console.log('调用了父组件的方法--'+data);
+                    console.log(data1);
+                    this.msg = data1;
+                }
+            },
+            components: {
+              com2:com2
+            }
+        });
+    </script>
+</body>
+
+</html>
